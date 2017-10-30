@@ -1,0 +1,25 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "Liri Node App for UCLA CBC 2017",
+  "main": "liri.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpdebree/liri-node-app.git"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Kevin de Bree <kpdebree>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kpdebree/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/kpdebree/liri-node-app#readme",
+  "dependencies": {
+    "node-spotify-api": "^1.0.7"
+  }
+}
