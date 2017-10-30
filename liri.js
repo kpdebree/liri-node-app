@@ -40,13 +40,13 @@ function initialize() {
 
 function getTweets() {
 	user_tweets = [];
-	var user_name = {screen_name: 'cfmonkey45'};
+	var user_name = {screen_name: 'realDonaldTrump'};
 	twitter.get('statuses/user_timeline', user_name, function(error, tweets, response) {
 		if (!error) {
-			console.log("TWITTER: Last 20 Tweets for " + user_name);
+			console.log("TWITTER: Last 20 Tweets for @realDonaldTrump");
 			for (i = 0; i < 20; i++) {
 				user_tweets.push(tweets[i].text)
-				console.log(tweets[i].text);
+				console.log((i + 1) + ". " + tweets[i].text);
 			}
 		} else if (error) {
 			console.log(error)
@@ -57,7 +57,7 @@ function getTweets() {
 
 function getSpotify() {
 	if (command_string === undefined) {
-		command_string = "The Sign";
+		command_string = "Never Going To Give You Up";
 		console.log("String Undefined. Initiating Default Search")
 	};
 	spotify.search({ type: 'track', query: command_string }, function(err, data) {
