@@ -6,7 +6,6 @@ var Twitter = require('twitter');
 
 var command = process.argv[2];
 var command_string = process.argv[3];
-var command_extra = process.argv[4];
 
 var user_tweets = [];
 
@@ -81,9 +80,11 @@ function getSpotify() {
 function getMovie() {
 	if(command_string === undefined) {
 		command_string = "Mr. Nobody";
+		console.log("default")
 	};
-	request('http://www.omdbapi.com/?t=' + command_string + '&y=&plot=short&r=json&tomatoes=true', function (error, response, body) {
+	request('http://www.omdbapi.com/?apikey=40e9cece&t=' + command_string + '&y=&plot=short&r=json&tomatoes=true', function (error, response, body) {
 		if ( !error && response.statusCode == 200) {
+			console.log("Success")
 			var movie = JSON.parse(body);
 		    console.log("Title: " + movie.Title);
 		    console.log("Year: " + movie.Year);
@@ -94,8 +95,25 @@ function getMovie() {
 		    console.log("Actors: " + movie.Actors);
 		    console.log("RottenTomatoes Rating: " + movie.tomatoRating);
 		    console.log("RottenTomatoes Link: " + movie.tomatoURL);
+		} else {
+			console.log("Error")
+			console.log(response.statusCode)
 		}
 	})
 }
+
+function readTxt(){
+  fs.readFile("./random.txt", "utf8", function(err, data){
+    if (err) {
+    	console.log(err)
+      	throw err;
+    } else if (!err) {
+      	dataSplit = data.split(",");
+     	command = dataSplit[0];
+      	command_string = dataSplit[1];
+      	initialize();
+    };
+  });
+};
 
 initialize();
